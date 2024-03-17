@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\StudentResources;
 use App\Http\Resources\UserResources;
 use App\Models\Student;
 use App\Models\Teacher;
@@ -33,6 +32,7 @@ class AuthController extends Controller
         ]);
 
         $user = User::create([
+            "role_id" => 2,
             "name" => $request->name,
             "email" => $request->email,
             "password" => Hash::make($request->password),
@@ -46,7 +46,7 @@ class AuthController extends Controller
         return response()->json([
             "status" => true,
             "message" => "User registered",
-            "data" => new StudentResources($student->loadMissing("user:user_id,google_id,email,image")),
+            "data" => new UserResources($user->loadMissing(["student"])),
         ]);
     }
 
@@ -59,8 +59,9 @@ class AuthController extends Controller
         ]);
 
         $user = User::with([
-            "student",
-            "teacher",
+            "student:student_id,user_id,name,parentname,nickname,birthdate,birthplace,schoolname,grade,age,religion",
+            "teacher:teacher_id,user_id,name,jobdesc,address,phone,age,religion",
+            "role:role_id,description",
         ])->where("email", $request->email)->first();
 
         if (!$user) {
@@ -162,6 +163,7 @@ class AuthController extends Controller
             return redirect()->away("https://luarkelas.id/google?status=true&token=" . $token);
         } else {
             $newUser = User::create([
+                "role_id" => 2,
                 "google_id" => $google->id,
                 "email" => $google->email,
                 "password" => Hash::make("password"),
@@ -169,6 +171,7 @@ class AuthController extends Controller
             ]);
 
             $newStudent = Student::create([
+                "role_id" => 2,
                 "user_id" => $newUser->user_id,
                 "name" => $google->name,
             ]);

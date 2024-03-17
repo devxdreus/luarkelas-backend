@@ -12,13 +12,15 @@ class user_seeder extends Seeder
     {
         User::insert([
             [
+                "role_id" => 1,
                 "google_id" => null,
-                "email" => "admin",
+                "email" => "admin@admin",
                 "password" => Hash::make("admin"),
                 "created_at" => now(),
                 "updated_at" => now(),
             ],
             [
+                "role_id" => 3,
                 "google_id" => null,
                 "email" => "hidayatulfitriya9@gmail.com",
                 "password" => Hash::make("12345"),
@@ -26,6 +28,7 @@ class user_seeder extends Seeder
                 "updated_at" => now(),
             ],
             [
+                "role_id" => 3,
                 "google_id" => null,
                 "email" => "yumnayummy15@gmail.com",
                 "password" => Hash::make("12345"),
@@ -33,6 +36,7 @@ class user_seeder extends Seeder
                 "updated_at" => now(),
             ],
             [
+                "role_id" => 3,
                 "google_id" => null,
                 "email" => "rizal.hdyt087@gmail.com",
                 "password" => Hash::make("12345"),
@@ -40,6 +44,7 @@ class user_seeder extends Seeder
                 "updated_at" => now(),
             ],
             [
+                "role_id" => 3,
                 "google_id" => null,
                 "email" => "lailatulhidayah@gmail.com",
                 "password" => Hash::make("12345"),
@@ -47,6 +52,7 @@ class user_seeder extends Seeder
                 "updated_at" => now(),
             ],
             [
+                "role_id" => 3,
                 "google_id" => null,
                 "email" => "muhammadjefri@gmail.com",
                 "password" => Hash::make("12345"),
@@ -54,6 +60,7 @@ class user_seeder extends Seeder
                 "updated_at" => now(),
             ],
             [
+                "role_id" => 3,
                 "google_id" => null,
                 "email" => "faustineamelia@gmail.com",
                 "password" => Hash::make("12345"),

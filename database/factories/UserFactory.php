@@ -12,6 +12,7 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
+            'role_id' => 2,
             'google_id' => null,
             'email' => fake()->unique()->safeEmail(),
             'password' => Hash::make('12345'),
