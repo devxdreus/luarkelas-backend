@@ -31,9 +31,11 @@ class TeacherController extends Controller
     {
         $teacher = Teacher::with([
             "user:user_id,email,image",
-            "students:teacher_id,student_id,name,parentname,nickname,birthdate,birthplace,schoolname,grade,phone,address,age,religion",
+            "students",
             "reports:teacher_id,student_id,report_id,title,content,duration,created_at",
         ])->find($id);
+
+        $teacher->students = $teacher->students->loadMissing("user:user_id,role_id,google_id,email,image");
 
         if (!$teacher) {
             return response()->json([

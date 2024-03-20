@@ -2,17 +2,13 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\StudentResources;
 use App\Http\Resources\UserResources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class TeacherResources extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>
-     */
     public function toArray(Request $request): array
     {
         return [
@@ -25,7 +21,8 @@ class TeacherResources extends JsonResource
             "religion" => $this->religion,
             "jobdesc" => $this->jobdesc,
             "user" => new UserResources($this->whenLoaded("user")),
-            "students" => $this->whenLoaded("students"),
+            "students" => StudentResources::collection($this->whenLoaded("students")),
+            // "students" => $this->whenLoaded("students"),
             "reports" => $this->whenLoaded("reports"),
             "created_at" => $this->created_at,
             "updated_at" => $this->updated_at,
