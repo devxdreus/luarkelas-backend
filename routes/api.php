@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\StudentController;
@@ -76,5 +77,16 @@ Route::group(["prefix" => "/"], function () {
         Route::put('teacher/{id}', [TeacherController::class, 'update']);
         Route::delete('teacher/{id}', [TeacherController::class, 'destroy']);
 
+    });
+
+    /*
+    |--------------------------------------------------------------------------|
+    |                               Admin  Routes                              |
+    |--------------------------------------------------------------------------|
+     */
+    Route::middleware("auth:sanctum")->group(function () {
+        Route::get('new-students', [AdminController::class, 'newStudents']);
+        Route::post('add-students', [AdminController::class, 'addStudent']);
+        Route::put('update-student/{id}', [AdminController::class, 'updateStudent']);
     });
 });

@@ -12,14 +12,21 @@ class ReportController extends Controller
     // index
     public function index(Request $request)
     {
-        $reports = Report::get();
+        try {
+            $reports = Report::get();
 
-        // return response
-        return response()->json([
-            "status" => true,
-            "message" => "Report Lists",
-            "data" => ReportResources::collection($reports->loadMissing(["student", "teacher"])),
-        ]);
+            // return response
+            return response()->json([
+                "status" => true,
+                "message" => "Report Lists",
+                "data" => ReportResources::collection($reports->loadMissing(["student", "teacher"])),
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                "status" => false,
+                "message" => "Error while fetching reports",
+            ]);
+        }
     }
 
     // show
