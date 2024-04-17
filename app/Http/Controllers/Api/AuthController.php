@@ -29,25 +29,40 @@ class AuthController extends Controller
             "name" => "required",
             "email" => "required|email|unique:users,email",
             "password" => "required|",
+            "role_id" => "required|numeric",
         ]);
 
         $user = User::create([
-            "role_id" => 2,
+            "role_id" => $request->role_id,
             "name" => $request->name,
             "email" => $request->email,
             "password" => Hash::make($request->password),
         ]);
 
-        $student = Student::create([
-            "user_id" => $user->user_id,
-            "name" => $request->name,
-        ]);
+        if ($request->role_id == 2) {
+            $student = Student::create([
+                "user_id" => $user->user_id,
+                "name" => $request->name,
+            ]);
 
-        return response()->json([
-            "status" => true,
-            "message" => "User registered",
-            "data" => new UserResources($user->loadMissing(["student"])),
-        ]);
+            return response()->json([
+                "status" => true,
+                "message" => "User registered",
+                "data" => new UserResources($user->loadMissing(["student"])),
+            ]);
+        } else {
+            $teacher = Teacher::create([
+                "user_id" => $user->user_id,
+                "name" => $request->name,
+            ]);
+
+            return response()->json([
+                "status" => true,
+                "message" => "User registered",
+                "data" => new UserResources($user->loadMissing(["teacher"])),
+            ]);
+        }
+
     }
 
     // login
