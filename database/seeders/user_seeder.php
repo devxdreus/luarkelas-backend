@@ -67,6 +67,14 @@ class user_seeder extends Seeder
                 "created_at" => now(),
                 "updated_at" => now(),
             ],
+            [
+                "role_id" => 3,
+                "google_id" => null,
+                "email" => "michaelchristiantjahyadi@gmail.com",
+                "password" => Hash::make("12345"),
+                "created_at" => now(),
+                "updated_at" => now(),
+            ],
         ]);
         User::factory(28)->create();
 

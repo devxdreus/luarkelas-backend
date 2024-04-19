@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\EmailController;
 use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\StudentController;
 use App\Http\Controllers\Api\TeacherController;
@@ -16,10 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(["prefix" => "/"], function () {
     Route::get('', [AuthController::class, 'index']);
+    Route::get("/test", [EmailController::class, "index"]);
 
     /*
     |--------------------------------------------------------------------------|
-    |                               Auth Routes                             |
+    |                               Auth Routes                                |
     |--------------------------------------------------------------------------|
      */
     Route::post('register', [AuthController::class, 'register']);
@@ -38,6 +40,9 @@ Route::group(["prefix" => "/"], function () {
         Route::get('users', [UserController::class, 'index']);
         Route::get('user/{id}', [UserController::class, 'show']);
         Route::put('user/{id}', [UserController::class, 'update']);
+
+        // change password
+        Route::put("user-password/{id}", [UserController::class, "updatePassword"]);
     });
 
     /*

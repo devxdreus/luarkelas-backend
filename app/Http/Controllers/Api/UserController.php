@@ -7,6 +7,7 @@ use App\Http\Resources\UserResources;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -183,6 +184,39 @@ class UserController extends Controller
                 ]);
             }
         }
+    }
+
+    public function updatePassword(Request $request, $id)
+    {
+        $request->validate([
+            "old_password" => "required",
+            "new_password" => "required",
+        ]);
+
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json([
+                "status" => false,
+                "message" => "User Not Found",
+            ]);
+        }
+
+        if (!password_verify($request->old_password, $user->password)) {
+            return response()->json([
+                "status" => false,
+                "message" => "Old Password is Wrong",
+            ]);
+        }
+
+        $user->update([
+            "password" => Hash::make($request->new_password),
+        ]);
+
+        return response()->json([
+            "status" => true,
+            "message" => "Password Updated",
+        ]);
     }
 
     public function generateRandomString($length = 30)

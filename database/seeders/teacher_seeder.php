@@ -76,6 +76,17 @@ class teacher_seeder extends Seeder
                 "created_at" => now(),
                 "updated_at" => now(),
             ],
+            [
+                "user_id" => 8,
+                "name" => "michaelchristiantjahyadi@gmail.com",
+                "jobdesc" => "Guru Privat",
+                "address" => fake()->address(),
+                "phone" => fake()->phoneNumber(),
+                'age' => rand(18, 33),
+                "religion" => fake()->randomElement(["Islam", "Kristen", "Katolik", "Hindu", "Budha"]),
+                "created_at" => now(),
+                "updated_at" => now(),
+            ],
         ]);
     }
 }
