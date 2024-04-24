@@ -30,6 +30,7 @@ class AuthController extends Controller
             "email" => "required|email|unique:users,email",
             "password" => "required|",
             "role_id" => "required|numeric",
+            "jobdesc" => "string",
         ]);
 
         $user = User::create([
@@ -54,6 +55,7 @@ class AuthController extends Controller
             $teacher = Teacher::create([
                 "user_id" => $user->user_id,
                 "name" => $request->name,
+                "jobdesc" => $request->jobdesc,
             ]);
 
             return response()->json([

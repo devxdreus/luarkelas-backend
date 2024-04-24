@@ -2,33 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\Student;
 use Illuminate\Database\Seeder;
 
 class student_seeder extends Seeder
 {
     public function run(): void
     {
-        // loop through 10 students
-        // for ($i = 0; $i < 20; $i++) {
-        //     // create a student
-        //     Student::create([
-        //         "user_id" => $i + 9,
-        //         "teacher_id" => rand(1, 6),
-        //         "name" => fake()->name(),
-        //         'parentname' => fake()->name(),
-        //         'nickname' => fake()->name(),
-        //         'birthdate' => fake()->date(),
-        //         'birthplace' => fake()->city(),
-        //         'schoolname' => fake()->company(),
-        //         'address' => fake()->address(),
-        //         'phone' => fake()->phoneNumber(),
-        //         'grade' => rand(1, 12),
-        //         'age' => rand(6, 18),
-        //         'religion' => fake()->randomElement(["Islam", "Kristen", "Katolik", "Hindu", "Budha"]),
-        //         "created_at" => now(),
-        //         "updated_at" => now(),
-        //     ]);
-        // }
 
         $data = [
             [
@@ -42,7 +22,7 @@ class student_seeder extends Seeder
                 'schoolname' => "Little Sun",
                 'address' => null,
                 'phone' => null,
-                'grade' => 9,
+                'grade' => "9",
                 'age' => null,
                 'religion' => "Budha",
                 "created_at" => now(),
@@ -59,9 +39,9 @@ class student_seeder extends Seeder
                 'schoolname' => "Petra 5",
                 'address' => null,
                 'phone' => null,
-                'grade' => 0,
+                'grade' => "TK A",
                 'age' => null,
-                'religion' => "Katolik",
+                'religion' => "Kristen",
                 "created_at" => now(),
                 "updated_at" => now(),
             ],
@@ -76,7 +56,7 @@ class student_seeder extends Seeder
                 'schoolname' => "Ellyon",
                 'address' => null,
                 'phone' => null,
-                'grade' => 0,
+                'grade' => "TK B",
                 'age' => null,
                 'religion' => "Kristen",
                 "created_at" => now(),
@@ -93,31 +73,31 @@ class student_seeder extends Seeder
                 'schoolname' => "Sampoerna Academy",
                 'address' => null,
                 'phone' => null,
-                'grade' => 0,
+                'grade' => "Preschool",
                 'age' => null,
                 'religion' => "Kristen",
                 "created_at" => now(),
                 "updated_at" => now(),
             ],
-            // [
-            //     "user_id" => 13,
-            //     "teacher_id" => null,
-            //     "name" => "Kanaya",
-            //     'parentname' => null,
-            //     'nickname' => " Kanaya",
-            //     'birthdate' => null,
-            //     'birthplace' => "Surabaya",
-            //     'schoolname' => "Benih Kasih",
-            //     'address' => null,
-            //     'phone' => null,
-            //     'grade' => 0,
-            //     'age' => null,
-            //     'religion' => "Kristen",
-            //     "created_at" => now(),
-            //     "updated_at" => now(),
-            // ],
             [
                 "user_id" => 13,
+                "teacher_id" => null,
+                "name" => "Kanaya",
+                'parentname' => null,
+                'nickname' => "Kanaya",
+                'birthdate' => null,
+                'birthplace' => "Surabaya",
+                'schoolname' => "Benih Kasih",
+                'address' => null,
+                'phone' => null,
+                'grade' => "TK B",
+                'age' => null,
+                'religion' => "Kristen",
+                "created_at" => now(),
+                "updated_at" => now(),
+            ],
+            [
+                "user_id" => 14,
                 "teacher_id" => null,
                 "name" => "Matthew G",
                 'parentname' => null,
@@ -134,7 +114,7 @@ class student_seeder extends Seeder
                 "updated_at" => now(),
             ],
             [
-                "user_id" => 14,
+                "user_id" => 15,
                 "teacher_id" => null,
                 "name" => "Hansel Orlando Tjoatmaja",
                 'parentname' => null,
@@ -151,7 +131,7 @@ class student_seeder extends Seeder
                 "updated_at" => now(),
             ],
             [
-                "user_id" => 15,
+                "user_id" => 16,
                 "teacher_id" => null,
                 "name" => "Angela Faye Santoso",
                 'parentname' => null,
@@ -161,14 +141,14 @@ class student_seeder extends Seeder
                 'schoolname' => "Sampoerna Academy",
                 'address' => null,
                 'phone' => null,
-                'grade' => 0,
+                'grade' => "Preschool",
                 'age' => null,
-                'religion' => "Kristen",
+                'religion' => null,
                 "created_at" => now(),
                 "updated_at" => now(),
             ],
             [
-                "user_id" => 16,
+                "user_id" => 17,
                 "teacher_id" => null,
                 "name" => "Adinda Etikasari Putri",
                 'parentname' => null,
@@ -185,24 +165,24 @@ class student_seeder extends Seeder
                 "updated_at" => now(),
             ],
             [
-                "user_id" => 17,
+                "user_id" => 18,
                 "teacher_id" => null,
                 "name" => "Jonathan Bima Bayu Saputra",
                 'parentname' => null,
                 'nickname' => "Jojo",
                 'birthdate' => null,
                 'birthplace' => "Surabaya",
-                'schoolname' => null,
+                'schoolname' => "belum sekolah",
                 'address' => null,
                 'phone' => null,
-                'grade' => 0,
+                'grade' => "belum sekolah",
                 'age' => null,
                 'religion' => "Budha",
                 "created_at" => now(),
                 "updated_at" => now(),
             ],
             [
-                "user_id" => 18,
+                "user_id" => 19,
                 "teacher_id" => null,
                 "name" => "Muhammad Alvin hari pratista",
                 'parentname' => null,
@@ -219,7 +199,7 @@ class student_seeder extends Seeder
                 "updated_at" => now(),
             ],
             [
-                "user_id" => 19,
+                "user_id" => 20,
                 "teacher_id" => null,
                 "name" => "Rafael Hieronimus Yoewono",
                 'parentname' => null,
@@ -229,12 +209,31 @@ class student_seeder extends Seeder
                 'schoolname' => "Gloria",
                 'address' => null,
                 'phone' => null,
-                'grade' => 0,
+                'grade' => "PG B",
                 'age' => null,
-                'religion' => "Kristen",
+                'religion' => null,
+                "created_at" => now(),
+                "updated_at" => now(),
+            ],
+            [
+                "user_id" => 21,
+                "teacher_id" => null,
+                "name" => "Queenara Azzalea Elshanum Nurangga",
+                'parentname' => null,
+                'nickname' => "Alea",
+                'birthdate' => null,
+                'birthplace' => "Gresik",
+                'schoolname' => "Belum Sekolah",
+                'address' => null,
+                'phone' => null,
+                'grade' => "Preschool",
+                'age' => null,
+                'religion' => "Islam",
                 "created_at" => now(),
                 "updated_at" => now(),
             ],
         ];
+
+        Student::insert($data);
     }
 }

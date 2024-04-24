@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string("schoolname")->nullable();
             $table->string("address")->nullable();
             $table->string("phone")->nullable();
-            $table->integer("grade")->nullable();
+            $table->string("grade")->nullable();
             $table->integer("age")->nullable();
             $table->string("religion")->nullable();
             $table->timestamps();

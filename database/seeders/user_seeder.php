@@ -94,7 +94,32 @@ class user_seeder extends Seeder
             [
                 "role_id" => 2,
                 "google_id" => null,
-                "email" => "sofiamuljono@gmail.com",
+                "email" => "calev.tanuwijoyo@gmail.com",
+                "password" => Hash::make("12345"),
+                "created_at" => now(),
+                "updated_at" => now(),
+            ],
+            [
+                "role_id" => 2,
+                "google_id" => null,
+                "email" => "eve121191@gmail.com",
+                "password" => Hash::make("12345"),
+                "created_at" => now(),
+                "updated_at" => now(),
+            ],
+            [
+                "role_id" => 2,
+                "google_id" => null,
+                "email" => "tan_indah@yahoo.com",
+                "password" => Hash::make("12345"),
+                "created_at" => now(),
+                "updated_at" => now(),
+            ],
+
+            [
+                "role_id" => 2,
+                "google_id" => null,
+                "email" => "Sofiamuljono@gmail.com",
                 "password" => Hash::make("12345"),
                 "created_at" => now(),
                 "updated_at" => now(),
@@ -110,7 +135,7 @@ class user_seeder extends Seeder
             [
                 "role_id" => 2,
                 "google_id" => null,
-                "email" => "scarleticity@gmail.com",
+                "email" => "Scarleticity@gmail.com",
                 "password" => Hash::make("12345"),
                 "created_at" => now(),
                 "updated_at" => now(),
@@ -142,14 +167,19 @@ class user_seeder extends Seeder
             [
                 "role_id" => 2,
                 "google_id" => null,
-                "email" => "setiono.devina@gmail.com",
+                "email" => "Setiono.devina@gmail.com",
                 "password" => Hash::make("12345"),
                 "created_at" => now(),
                 "updated_at" => now(),
             ],
-
+            [
+                "role_id" => 2,
+                "google_id" => null,
+                "email" => "Dwipuspita945.dps@gmail.com",
+                "password" => Hash::make("12345"),
+                "created_at" => now(),
+                "updated_at" => now(),
+            ],
         ]);
-        User::factory(28)->create();
-
     }
 }
