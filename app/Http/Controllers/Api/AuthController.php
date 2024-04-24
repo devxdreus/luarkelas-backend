@@ -30,8 +30,13 @@ class AuthController extends Controller
             "email" => "required|email|unique:users,email",
             "password" => "required|",
             "role_id" => "required|numeric",
-            "jobdesc" => "string",
         ]);
+
+        if ($request->role_id == 3) {
+            $request->validate([
+                "jobdesc" => "required|string",
+            ]);
+        }
 
         $user = User::create([
             "role_id" => $request->role_id,
