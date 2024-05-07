@@ -93,6 +93,8 @@ class ReportController extends Controller
                 Salam Hormat kak,' . $student->name . '
                 Laporan belajar baru telah terbit, silahkan diperiksa dengan akun yang telah terdaftar di luarkelas.id
 
+                Laporan Belajar dapat ditinjau di https://luarkelas.id/report/' . $report->id . '
+
                 Hormat Kami,
                 Tim Luarkelas Indonesia
                 '
