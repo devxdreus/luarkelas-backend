@@ -623,6 +623,7 @@ class ComposerStaticInit96f6aab1d3796eca9d6b52354b69e0a0
         'App\\Http\\Resources\\StudentResources' => __DIR__ . '/../..' . '/app/Http/Resources/StudentResources.php',
         'App\\Http\\Resources\\TeacherResources' => __DIR__ . '/../..' . '/app/Http/Resources/TeacherResources.php',
         'App\\Http\\Resources\\UserResources' => __DIR__ . '/../..' . '/app/Http/Resources/UserResources.php',
+        'App\\Mail\\TestEmail' => __DIR__ . '/../..' . '/app/Mail/TestEmail.php',
         'App\\Models\\Report' => __DIR__ . '/../..' . '/app/Models/Report.php',
         'App\\Models\\Role' => __DIR__ . '/../..' . '/app/Models/Role.php',
         'App\\Models\\Student' => __DIR__ . '/../..' . '/app/Models/Student.php',

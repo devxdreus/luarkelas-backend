@@ -29,6 +29,7 @@ return array(
     'App\\Http\\Resources\\StudentResources' => $baseDir . '/app/Http/Resources/StudentResources.php',
     'App\\Http\\Resources\\TeacherResources' => $baseDir . '/app/Http/Resources/TeacherResources.php',
     'App\\Http\\Resources\\UserResources' => $baseDir . '/app/Http/Resources/UserResources.php',
+    'App\\Mail\\TestEmail' => $baseDir . '/app/Mail/TestEmail.php',
     'App\\Models\\Report' => $baseDir . '/app/Models/Report.php',
     'App\\Models\\Role' => $baseDir . '/app/Models/Role.php',
     'App\\Models\\Student' => $baseDir . '/app/Models/Student.php',
