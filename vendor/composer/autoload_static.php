@@ -604,6 +604,7 @@ class ComposerStaticInit96f6aab1d3796eca9d6b52354b69e0a0
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Api\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/AdminController.php',
         'App\\Http\\Controllers\\Api\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/AuthController.php',
+        'App\\Http\\Controllers\\Api\\EmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/EmailController.php',
         'App\\Http\\Controllers\\Api\\ReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/ReportController.php',
         'App\\Http\\Controllers\\Api\\StudentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/StudentController.php',
         'App\\Http\\Controllers\\Api\\TeacherController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/TeacherController.php',
