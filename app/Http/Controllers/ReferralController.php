@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Referral;
 use App\Models\User;
 
 class ReferralController extends Controller
@@ -12,18 +13,14 @@ class ReferralController extends Controller
             return response('Unauthorized.', 401);
         }
 
-        do {
-            $code = str()->upper(str()->random(6));
-        } while (User::where('referral_code', $code)->exists());
-
-        $user->referral_code = $code;
+        $user->referral_code = User::generateCode();
         $user->save();
 
         return response()->json([
             "status" => true,
             "message" => "Referral Code Generated",
             "data" => [
-                'referral_code' => $code,
+                'referral_code' => $user->referral_code,
             ],
         ]);
     }

@@ -60,4 +60,12 @@ class User extends Authenticatable
         return $this->hasOne(Referral::class, "referred_id");
     }
 
+    public static function generateCode(): string
+    {
+        do {
+            $code = "LK-" . str(str()->random(6))->upper();
+        } while (User::where('referral_code', $code)->exists());
+
+        return $code;
+    }
 }

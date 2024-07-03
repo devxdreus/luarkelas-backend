@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResources;
+use App\Models\Referral;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\User;
@@ -42,6 +43,7 @@ class AuthController extends Controller
             "role_id" => $request->role_id,
             "name" => $request->name,
             "email" => $request->email,
+            'referral_code' => User::generateCode(),
             "password" => Hash::make($request->password),
         ]);
 

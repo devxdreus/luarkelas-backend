@@ -14,7 +14,7 @@ class UserResources extends JsonResource
             "google_id" => $this->google_id,
             "role_id" => $this->role_id,
             "email" => $this->email,
-            "referral_code" => $this->referral_code ?? '',
+            "referral_code" => $this->referral_code,
             "image" => $this->image == null ? null : ($this->google_id != null ? $this->image : url("images/" . $this->image)),
             "student" => $this->whenLoaded("student"),
             "teacher" => $this->whenLoaded("teacher"),
