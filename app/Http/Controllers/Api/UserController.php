@@ -19,7 +19,7 @@ class UserController extends Controller
         return response()->json([
             "status" => true,
             "message" => "Welcome to Luarkelas API",
-            "data" => UserResources::collection($users->loadMissing(["student", "teacher"])),
+            "data" => UserResources::collection($users->loadMissing(["student", "teacher", 'referred'])),
         ]);
     }
 
@@ -38,7 +38,7 @@ class UserController extends Controller
         return response()->json([
             "status" => true,
             "message" => "User Detail",
-            "data" => new UserResources($user->loadMissing(["student", "teacher"])),
+            "data" => new UserResources($user->loadMissing(["student", "teacher", 'referred'])),
         ]);
     }
 
@@ -60,7 +60,7 @@ class UserController extends Controller
             "religion" => "required",
         ]);
 
-        $user = User::with(["student", "teacher"])->find($id);
+        $user = User::with(["student", "teacher", 'referred'])->find($id);
 
         if (!$user) {
             return response()->json([
@@ -228,5 +228,27 @@ class UserController extends Controller
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    public function generateReferralCode(Request $request, User $user)
+    {
+        if ($request->user()->user_id != $user->user_id){
+            return response('Unauthorized.', 401);
+        }
+
+        do {
+            $code = 'LK-' . str(str()->random(6))->upper();
+        } while (User::where('referral_code', $code)->exists());
+
+        $user->referral_code = $code;
+        $user->save();
+
+        return response()->json([
+            "status" => true,
+            "message" => "Referral Code Generated",
+            "data" => [
+                'referral_code' => $code,
+            ],
+        ]);
     }
 }

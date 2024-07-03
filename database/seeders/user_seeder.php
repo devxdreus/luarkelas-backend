@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Referral;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -180,6 +181,10 @@ class user_seeder extends Seeder
                 "created_at" => now(),
                 "updated_at" => now(),
             ],
+        ]);
+
+        Referral::factory(5)->create([
+            'referrer_id' => 1,
         ]);
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\StudentController;
 use App\Http\Controllers\Api\TeacherController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\ReferralController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +44,9 @@ Route::group(["prefix" => "/"], function () {
 
         // change password
         Route::put("user-password/{id}", [UserController::class, "updatePassword"]);
+
+        // regenerate referral code
+        Route::put('users/{user}/referral', [UserController::class, 'generateReferralCode']);
     });
 
     /*
