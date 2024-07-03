@@ -230,18 +230,14 @@ class UserController extends Controller
         return $randomString;
     }
 
-    public function generateReferralCode(Request $request, User $user)
+    public function generateReferralCode(Request $request)
     {
-        if ($request->user()->user_id != $user->user_id){
-            return response('Unauthorized.', 401);
-        }
-
         do {
             $code = 'LK-' . str(str()->random(6))->upper();
         } while (User::where('referral_code', $code)->exists());
 
-        $user->referral_code = $code;
-        $user->save();
+        auth()->user()->referral_code = $code;
+        auth()->user()->save();
 
         return response()->json([
             "status" => true,
