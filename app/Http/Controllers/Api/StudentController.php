@@ -18,7 +18,7 @@ class StudentController extends Controller
             "status" => true,
             "message" => "Student Lists",
             "data" => StudentResources::collection($students->loadMissing([
-                "user:user_id,email,image",
+                "user:user_id,email,image,referral_code",
                 "teacher:teacher_id,name,jobdesc,address,phone,age,religion",
             ])),
         ]);
@@ -40,7 +40,7 @@ class StudentController extends Controller
             "status" => true,
             "message" => "Student Detail",
             "data" => new StudentResources($student->loadMissing([
-                "user:user_id,email,image",
+                "user:user_id,email,image,referral_code",
                 "teacher:teacher_id,name,jobdesc,address,phone,age,religion",
                 "reports:student_id,teacher_id,report_id,title,content,duration,created_at",
             ])),

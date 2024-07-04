@@ -16,7 +16,7 @@ class TeacherController extends Controller
     public function index()
     {
         $teachers = Teacher::with([
-            "user:user_id,email,image",
+            "user:user_id,email,image,referral_code",
         ])->get();
 
         return response()->json([
@@ -30,12 +30,12 @@ class TeacherController extends Controller
     public function show($id)
     {
         $teacher = Teacher::with([
-            "user:user_id,email,image",
+            "user:user_id,email,image,referral_code",
             "students",
             "reports:teacher_id,student_id,report_id,title,content,duration,created_at",
         ])->find($id);
 
-        $teacher->students = $teacher->students->loadMissing("user:user_id,role_id,google_id,email,image");
+        $teacher->students = $teacher->students->loadMissing("user:user_id,role_id,google_id,email,image,referral_code");
 
         if (!$teacher) {
             return response()->json([

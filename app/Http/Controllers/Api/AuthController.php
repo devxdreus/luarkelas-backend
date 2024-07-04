@@ -31,12 +31,20 @@ class AuthController extends Controller
             "email" => "required|email|unique:users,email",
             "password" => "required|",
             "role_id" => "required|numeric",
+            "referral_code" => "string|max:255"
         ]);
 
         if ($request->role_id == 3) {
             $request->validate([
                 "jobdesc" => "required|string",
             ]);
+        }
+
+        if ($request->referral_code && User::where('referral_code', $request->referral_code)->doesntExist()) {
+            return response()->json([
+                "status" => false,
+                "message" => "Referral Code Not Found",
+            ], 422);
         }
 
         $user = User::create([
@@ -46,6 +54,15 @@ class AuthController extends Controller
             'referral_code' => User::generateCode(),
             "password" => Hash::make($request->password),
         ]);
+
+        if ($request->referral_code){
+            $referrer = User::where('referral_code', $request->referral_code)->first();
+
+            Referral::create([
+                "referrer_id" => $referrer->user_id,
+                "referred_id" => $user->user_id,
+            ]);
+        }
 
         if ($request->role_id == 2) {
             $student = Student::create([
