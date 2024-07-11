@@ -232,18 +232,14 @@ class UserController extends Controller
 
     public function generateReferralCode(Request $request)
     {
-        do {
-            $code = 'LK-' . str(str()->random(6))->upper();
-        } while (User::where('referral_code', $code)->exists());
-
-        auth()->user()->referral_code = $code;
+        auth()->user()->referral_code = User::generateCode();
         auth()->user()->save();
 
         return response()->json([
             "status" => true,
             "message" => "Referral Code Generated",
             "data" => [
-                'referral_code' => $code,
+                'referral_code' => auth()->user()->referral_code,
             ],
         ]);
     }
