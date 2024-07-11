@@ -31,6 +31,8 @@ Route::group(["prefix" => "/"], function () {
     Route::get("auth/google", [AuthController::class, "redirectToGoogle"]);
     Route::get("auth/google/callback", [AuthController::class, "handleGoogleCallback"]);
 
+    Route::get('referral', [\App\Http\Controllers\ReferralController::class, 'checkTokenExist']);
+
     /*
     |--------------------------------------------------------------------------|
     |                               Users Routes                               |
