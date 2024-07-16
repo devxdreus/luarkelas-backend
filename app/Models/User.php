@@ -52,8 +52,10 @@ class User extends Authenticatable
                 $countByYearAndMonth[$year] = [];
             }
 
-            $countByYearAndMonth[$year]['month'] = $month;
-            $countByYearAndMonth[$year]['count'] = $user->count;
+            $countByYearAndMonth[$year][] = [
+                'month' => $month,
+                'count' => $user->count,
+            ];
         }
 
         return $countByYearAndMonth;
