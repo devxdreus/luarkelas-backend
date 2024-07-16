@@ -219,8 +219,8 @@ class UserController extends Controller
         ]);
     }
 
-    public function getByYearAndMonth(){
-        return response()->json(User::ByYearAndMonth());
+    public function countByYearAndMonth(){
+        return response()->json(User::countByYearAndMonth());
     }
 
     public function generateRandomString($length = 30)

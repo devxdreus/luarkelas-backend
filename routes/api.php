@@ -43,7 +43,7 @@ Route::group(["prefix" => "/"], function () {
         Route::get('user/{id}', [UserController::class, 'show']);
         Route::put('user/{id}', [UserController::class, 'update']);
 
-        Route::get('users/count', [UserController::class, 'getByYearAndMonth']);
+        Route::get('users/count', [UserController::class, 'countByYearAndMonth']);
 
         // change password
         Route::put("user-password/{id}", [UserController::class, "updatePassword"]);
