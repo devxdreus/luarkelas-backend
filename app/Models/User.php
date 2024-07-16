@@ -36,40 +36,27 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function scopeByYearAndMonth($query)
+    public function scopeCountByYearAndMonth($query)
     {
         $users = $query->selectRaw('YEAR(created_at) as year, MONTHNAME(created_at) as month, COUNT(*) as count')
-            ->select('user_id', 'name', 'email', 'created_at', 'updated_at')
-            ->groupBy('year', 'month', 'id', 'name', 'email', 'created_at', 'updated_at')
+            ->groupBy('year', 'month')
             ->get();
 
-        $usersByYearAndMonth = [];
+        $countByYearAndMonth = [];
 
         foreach ($users as $user) {
             $year = $user->year;
             $month = $user->month;
 
-            if (!isset($usersByYearAndMonth[$year])) {
-                $usersByYearAndMonth[$year] = [];
+            if (!isset($countByYearAndMonth[$year])) {
+                $countByYearAndMonth[$year] = [];
             }
 
-            if (!isset($usersByYearAndMonth[$year][$month])) {
-                $usersByYearAndMonth[$year][$month] = [
-                    'count' => $user->count,
-                    'data' => [],
-                ];
-            }
-
-            $usersByYearAndMonth[$year][$month]['data'][] = [
-                'id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email,
-                'created_at' => $user->created_at,
-                'updated_at' => $user->updated_at,
-            ];
+            $countByYearAndMonth[$year]['month'] = $month;
+            $countByYearAndMonth[$year]['count'] = $user->count;
         }
 
-        return $usersByYearAndMonth;
+        return $countByYearAndMonth;
     }
 
     public function student(): HasOne
