@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -34,6 +35,42 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function scopeByYearAndMonth($query)
+    {
+        $users = $query->selectRaw('YEAR(created_at) as year, MONTHNAME(created_at) as month, COUNT(*) as count')
+            ->select('user_id', 'name', 'email', 'created_at', 'updated_at')
+            ->groupBy('year', 'month', 'id', 'name', 'email', 'created_at', 'updated_at')
+            ->get();
+
+        $usersByYearAndMonth = [];
+
+        foreach ($users as $user) {
+            $year = $user->year;
+            $month = $user->month;
+
+            if (!isset($usersByYearAndMonth[$year])) {
+                $usersByYearAndMonth[$year] = [];
+            }
+
+            if (!isset($usersByYearAndMonth[$year][$month])) {
+                $usersByYearAndMonth[$year][$month] = [
+                    'count' => $user->count,
+                    'data' => [],
+                ];
+            }
+
+            $usersByYearAndMonth[$year][$month]['data'][] = [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'created_at' => $user->created_at,
+                'updated_at' => $user->updated_at,
+            ];
+        }
+
+        return $usersByYearAndMonth;
+    }
 
     public function student(): HasOne
     {

@@ -219,6 +219,10 @@ class UserController extends Controller
         ]);
     }
 
+    public function getByYearAndMonth(){
+        return response()->json(User::ByYearAndMonth());
+    }
+
     public function generateRandomString($length = 30)
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
