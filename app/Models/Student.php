@@ -27,6 +27,7 @@ class Student extends Model
         "grade",
         "age",
         "religion",
+        "status",
         'created_at',
         'updated_at',
     ];

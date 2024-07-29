@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\StudentStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\StudentResources;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class StudentController extends Controller
 {
@@ -63,6 +65,7 @@ class StudentController extends Controller
             "grade" => "required|numeric",
             "age" => "required|numeric",
             "religion" => "required",
+            "status" => [Rule::enum(StudentStatus::class)]
         ]);
 
         $student = Student::with([
@@ -86,7 +89,7 @@ class StudentController extends Controller
 
             // delete old image
             if ($student->user->image != null) {
-                unlink(public_path("images/" . $user->image));
+                unlink(public_path("images/" . $request->image));
             }
 
             // upload new image
@@ -109,6 +112,7 @@ class StudentController extends Controller
                 "grade" => $request->grade,
                 "age" => $request->age,
                 "religion" => $request->religion,
+                "status" => $request->status
             ]);
 
             $student->user->update([
@@ -139,6 +143,7 @@ class StudentController extends Controller
                 "grade" => $request->grade,
                 "age" => $request->age,
                 "religion" => $request->religion,
+                "status" => $request->status
             ]);
 
             return response()->json([

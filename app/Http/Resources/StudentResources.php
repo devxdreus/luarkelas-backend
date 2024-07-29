@@ -24,6 +24,7 @@ class StudentResources extends JsonResource
             "phone" => $this->phone,
             "age" => $this->age,
             "religion" => $this->religion,
+            "status" => $this->status,
             "user" => new UserResources($this->whenLoaded("user")),
             "teacher" => $this->whenLoaded("teacher"),
             "reports" => $this->whenLoaded("reports"),
