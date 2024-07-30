@@ -20,6 +20,9 @@ class role_seeder extends Seeder
             [
                 "description" => "Teacher",
             ],
+            [
+                "description" => "Guest",
+            ],
         ]);
     }
 }

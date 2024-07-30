@@ -75,7 +75,7 @@ class AuthController extends Controller
                 "message" => "User registered",
                 "data" => new UserResources($user->loadMissing(["student"])),
             ]);
-        } else {
+        } elseif ($request->role_id == 3) {
             $teacher = Teacher::create([
                 "user_id" => $user->user_id,
                 "name" => $request->name,
