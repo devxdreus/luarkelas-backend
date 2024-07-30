@@ -65,7 +65,7 @@ class StudentController extends Controller
             "grade" => "required|numeric",
             "age" => "required|numeric",
             "religion" => "required",
-            "status" => [Rule::enum(StudentStatus::class)]
+            "status" => ['required',Rule::enum(StudentStatus::class)]
         ]);
 
         $student = Student::with([
