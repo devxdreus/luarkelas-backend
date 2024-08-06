@@ -45,8 +45,9 @@ Route::group(["prefix" => "/"], function () {
 
         Route::get('users/count', [UserController::class, 'countByYearAndMonth']);
 
-        // change password
         Route::put("user-password/{id}", [UserController::class, "updatePassword"]);
+
+        Route::put("user/{user}/role", [UserController::class, "updateRole"]);
 
         // regenerate referral code
         Route::put('users/referral', [UserController::class, 'generateReferralCode']);

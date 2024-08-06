@@ -219,6 +219,25 @@ class UserController extends Controller
         ]);
     }
 
+    public function updateRole(Request $request, User $user)
+    {
+        if ($request->user()->cannot('update-role', $user)) {
+            abort(403);
+        }
+
+        $request->validate([
+            "role_id" => "required|exists:roles,role_id",
+        ]);
+
+        $user->role_id = $request->role_id;
+        $user->save();
+
+        return response()->json([
+            "status" => true,
+            "message" => "Role Updated",
+        ]);
+    }
+
     public function countByYearAndMonth(){
         return response()->json(User::countByYearAndMonth());
     }
