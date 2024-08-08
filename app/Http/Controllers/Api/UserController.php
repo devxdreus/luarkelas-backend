@@ -236,13 +236,13 @@ class UserController extends Controller
         if ($request->role_id == 2 && ! $user->student) {
             Student::create([
                 "user_id" => $user->user_id,
-                "name" => $user->name,
+                "name" => $user->name ?? '',
             ]);
 
         } else if ($request->role_id == 3 && ! $user->teacher) {
             $teacher = Teacher::create([
                 "user_id" => $user->user_id,
-                "name" => $user->name,
+                "name" => $user->name ?? '',
                 "jobdesc" => '',
             ]);
         }
