@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResources;
 use App\Models\Student;
+use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -231,6 +232,20 @@ class UserController extends Controller
 
         $user->role_id = $request->role_id;
         $user->save();
+
+        if ($request->role_id == 2 && ! $user->student) {
+            Student::create([
+                "user_id" => $user->user_id,
+                "name" => $user->name,
+            ]);
+
+        } else if ($request->role_id == 3 && ! $user->teacher) {
+            $teacher = Teacher::create([
+                "user_id" => $user->user_id,
+                "name" => $user->name,
+                "jobdesc" => '',
+            ]);
+        }
 
         return response()->json([
             "status" => true,
