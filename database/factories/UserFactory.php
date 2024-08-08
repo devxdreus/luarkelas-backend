@@ -14,6 +14,7 @@ class UserFactory extends Factory
         return [
             'role_id' => 2,
             'google_id' => null,
+            'name' => $this->faker->name(),
             'email' => fake()->unique()->safeEmail(),
             'password' => Hash::make('12345'),
             'image' => null,

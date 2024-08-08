@@ -13,6 +13,7 @@ return new class extends Migration
             $table->unsignedBigInteger("role_id");
             $table->string("google_id")->nullable();
             $table->string('email')->unique();
+            $table->string('name')->nullable();
             $table->string('password');
             $table->text("image")->nullable();
             $table->timestamps();
